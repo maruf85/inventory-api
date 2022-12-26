@@ -28,6 +28,7 @@ export class CreateProductInput {
     productPrice?: Nullable<number>;
     productQuantity?: Nullable<number>;
     createdAt?: Nullable<DateTime>;
+    productCategoryId?: Nullable<string>;
 }
 
 export class UpdateProductInput {
@@ -38,6 +39,7 @@ export class UpdateProductInput {
     productPrice?: Nullable<number>;
     productQuantity?: Nullable<number>;
     createdAt?: Nullable<DateTime>;
+    productCategoryId?: Nullable<string>;
 }
 
 export class Category {
@@ -45,6 +47,7 @@ export class Category {
     categoryName: string;
     categoryDescription?: Nullable<string>;
     createdAt?: Nullable<DateTime>;
+    products?: Nullable<Nullable<Product>[]>;
 }
 
 export abstract class IQuery {
@@ -79,6 +82,8 @@ export class Product {
     productPrice?: Nullable<number>;
     productQuantity?: Nullable<number>;
     createdAt?: Nullable<DateTime>;
+    productCategoryId?: Nullable<string>;
+    productCategory?: Nullable<Category>;
 }
 
 export type DateTime = any;

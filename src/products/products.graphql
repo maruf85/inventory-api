@@ -8,6 +8,8 @@ type Product {
   productPrice: Int
   productQuantity: Int
   createdAt: DateTime
+  productCategoryId: String
+  productCategory: Category
 }
 
 input CreateProductInput {
@@ -17,6 +19,7 @@ input CreateProductInput {
   productPrice: Int
   productQuantity: Int
   createdAt: DateTime
+  productCategoryId: String
 }
 
 input UpdateProductInput {
@@ -27,6 +30,7 @@ input UpdateProductInput {
   productPrice: Int
   productQuantity: Int
   createdAt: DateTime
+  productCategoryId: String
 }
 
 type Query {

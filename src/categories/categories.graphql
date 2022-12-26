@@ -5,6 +5,7 @@ type Category {
   categoryName: String!
   categoryDescription: String
   createdAt: DateTime
+  products: [Product]
 }
 
 input CreateCategoryInput {

@@ -13,7 +13,9 @@ export class CategoriesService {
   }
 
   findAll() {
-    return this.prisma.category.findMany();
+    return this.prisma.category.findMany({
+      include: { products: true },
+    });
   }
 
   findOne(categoryWhereUniqueInput: Prisma.CategoryWhereUniqueInput) {

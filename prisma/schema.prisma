@@ -8,18 +8,21 @@ datasource db {
 }
 
 model Product {
-  id                  String   @id @default(uuid())
-  productName         String
-  productDescription  String?
-  productUnit         String?
-  productPrice        Int?
-  productQuantity     Int?
-  createdAt           DateTime @default(now())
+  id                 String    @id @default(uuid())
+  productName        String
+  productDescription String?
+  productUnit        String?
+  productPrice       Int?
+  productQuantity    Int?
+  createdAt          DateTime  @default(now())
+  productCategory    Category? @relation(fields: [productCategoryId], references: [categoryId])
+  productCategoryId  String?
 }
 
 model Category {
-  categoryId          String @id @default(uuid())
+  categoryId          String    @id @default(uuid())
   categoryName        String
   categoryDescription String?
-  createdAt           DateTime @default(now())
+  createdAt           DateTime  @default(now())
+  products            Product[]
 }
