@@ -15,6 +15,7 @@ export class UsersService {
       data: {
         email: createUserInput.email,
         password: hashedPassword,
+        role: createUserInput.role,
       },
     });
   }

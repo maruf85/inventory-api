@@ -8,6 +8,11 @@
 /* tslint:disable */
 /* eslint-disable */
 
+export enum Role {
+    ADMIN = "ADMIN",
+    USER = "USER"
+}
+
 export class LoginUserInput {
     email: string;
     password: string;
@@ -50,12 +55,14 @@ export class UpdateProductInput {
 export class CreateUserInput {
     email: string;
     password: string;
+    role: Role;
 }
 
 export class UpdateUserInput {
     id: string;
     email?: Nullable<string>;
     password?: Nullable<string>;
+    role?: Nullable<Role>;
 }
 
 export class LoginResponse {
@@ -101,7 +108,7 @@ export abstract class IQuery {
 
     abstract product(id: string): Nullable<Product> | Promise<Nullable<Product>>;
 
-    abstract users(): Nullable<User>[] | Promise<Nullable<User>[]>;
+    abstract users(role?: Nullable<Role>): Nullable<User>[] | Promise<Nullable<User>[]>;
 
     abstract user(id: string): Nullable<User> | Promise<Nullable<User>>;
 }
@@ -120,8 +127,9 @@ export class Product {
 
 export class User {
     id: string;
-    email?: Nullable<string>;
-    password?: Nullable<string>;
+    email: string;
+    password: string;
+    role: Role;
 }
 
 export type DateTime = any;
