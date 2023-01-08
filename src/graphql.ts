@@ -8,6 +8,11 @@
 /* tslint:disable */
 /* eslint-disable */
 
+export class LoginUserInput {
+    email: string;
+    password: string;
+}
+
 export class CreateCategoryInput {
     categoryName: string;
     categoryDescription?: Nullable<string>;
@@ -53,6 +58,32 @@ export class UpdateUserInput {
     password?: Nullable<string>;
 }
 
+export class LoginResponse {
+    access_token?: Nullable<string>;
+}
+
+export abstract class IMutation {
+    abstract login(loginUserInput: LoginUserInput): LoginResponse | Promise<LoginResponse>;
+
+    abstract createCategory(createCategoryInput: CreateCategoryInput): Category | Promise<Category>;
+
+    abstract updateCategory(updateCategoryInput: UpdateCategoryInput): Category | Promise<Category>;
+
+    abstract removeCategory(id: string): Nullable<Category> | Promise<Nullable<Category>>;
+
+    abstract createProduct(createProductInput: CreateProductInput): Product | Promise<Product>;
+
+    abstract updateProduct(updateProductInput: UpdateProductInput): Product | Promise<Product>;
+
+    abstract removeProduct(id: string): Nullable<Product> | Promise<Nullable<Product>>;
+
+    abstract createUser(createUserInput: CreateUserInput): User | Promise<User>;
+
+    abstract updateUser(updateUserInput: UpdateUserInput): User | Promise<User>;
+
+    abstract removeUser(id: string): Nullable<User> | Promise<Nullable<User>>;
+}
+
 export class Category {
     categoryId: string;
     categoryName: string;
@@ -73,26 +104,6 @@ export abstract class IQuery {
     abstract users(): Nullable<User>[] | Promise<Nullable<User>[]>;
 
     abstract user(id: string): Nullable<User> | Promise<Nullable<User>>;
-}
-
-export abstract class IMutation {
-    abstract createCategory(createCategoryInput: CreateCategoryInput): Category | Promise<Category>;
-
-    abstract updateCategory(updateCategoryInput: UpdateCategoryInput): Category | Promise<Category>;
-
-    abstract removeCategory(id: string): Nullable<Category> | Promise<Nullable<Category>>;
-
-    abstract createProduct(createProductInput: CreateProductInput): Product | Promise<Product>;
-
-    abstract updateProduct(updateProductInput: UpdateProductInput): Product | Promise<Product>;
-
-    abstract removeProduct(id: string): Nullable<Product> | Promise<Nullable<Product>>;
-
-    abstract createUser(createUserInput: CreateUserInput): User | Promise<User>;
-
-    abstract updateUser(updateUserInput: UpdateUserInput): User | Promise<User>;
-
-    abstract removeUser(id: string): Nullable<User> | Promise<Nullable<User>>;
 }
 
 export class Product {

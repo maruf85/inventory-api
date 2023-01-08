@@ -24,13 +24,13 @@ export class UsersService {
   }
 
   findOne(userWhereUniqueInput: Prisma.UserWhereUniqueInput) {
-    return this.prisma.product.findUnique({
+    return this.prisma.user.findUnique({
       where: userWhereUniqueInput,
     });
   }
 
   update(id: string, updateUserInput: Prisma.UserUpdateInput) {
-    return this.prisma.product.update({
+    return this.prisma.user.update({
       where: { id },
       data: updateUserInput,
     });
