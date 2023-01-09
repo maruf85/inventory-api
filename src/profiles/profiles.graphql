@@ -1,0 +1,33 @@
+type Profile {
+  id: String!
+  firstName: String
+  lastName: String
+  address: String
+  phone: String
+}
+
+input CreateProfileInput {
+  firstName: String
+  lastName: String
+  address: String
+  phone: String
+}
+
+input UpdateProfileInput {
+  id: String!
+  firstName: String
+  lastName: String
+  address: String
+  phone: String
+}
+
+type Query {
+  profiles: [Profile]!
+  profile(id: String!): Profile
+}
+
+type Mutation {
+  createProfile(createProfileInput: CreateProfileInput!): Profile!
+  updateProfile(updateProfileInput: UpdateProfileInput!): Profile!
+  removeProfile(id: String!): Profile
+}

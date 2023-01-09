@@ -21,7 +21,9 @@ export class UsersService {
   }
 
   findAll() {
-    return this.prisma.user.findMany();
+    return this.prisma.user.findMany({
+      include: { profile: true },
+    });
   }
 
   findOne(userWhereUniqueInput: Prisma.UserWhereUniqueInput) {

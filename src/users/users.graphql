@@ -8,6 +8,7 @@ type User {
   email: String!
   password: String!
   role: Role!
+  profile: Profile! 
 }
 
 input CreateUserInput {

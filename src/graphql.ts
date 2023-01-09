@@ -52,6 +52,21 @@ export class UpdateProductInput {
     productCategoryId?: Nullable<string>;
 }
 
+export class CreateProfileInput {
+    firstName?: Nullable<string>;
+    lastName?: Nullable<string>;
+    address?: Nullable<string>;
+    phone?: Nullable<string>;
+}
+
+export class UpdateProfileInput {
+    id: string;
+    firstName?: Nullable<string>;
+    lastName?: Nullable<string>;
+    address?: Nullable<string>;
+    phone?: Nullable<string>;
+}
+
 export class CreateUserInput {
     email: string;
     password: string;
@@ -84,6 +99,12 @@ export abstract class IMutation {
 
     abstract removeProduct(id: string): Nullable<Product> | Promise<Nullable<Product>>;
 
+    abstract createProfile(createProfileInput: CreateProfileInput): Profile | Promise<Profile>;
+
+    abstract updateProfile(updateProfileInput: UpdateProfileInput): Profile | Promise<Profile>;
+
+    abstract removeProfile(id: string): Nullable<Profile> | Promise<Nullable<Profile>>;
+
     abstract createUser(createUserInput: CreateUserInput): User | Promise<User>;
 
     abstract updateUser(updateUserInput: UpdateUserInput): User | Promise<User>;
@@ -108,6 +129,10 @@ export abstract class IQuery {
 
     abstract product(id: string): Nullable<Product> | Promise<Nullable<Product>>;
 
+    abstract profiles(): Nullable<Profile>[] | Promise<Nullable<Profile>[]>;
+
+    abstract profile(id: string): Nullable<Profile> | Promise<Nullable<Profile>>;
+
     abstract users(role?: Nullable<Role>): Nullable<User>[] | Promise<Nullable<User>[]>;
 
     abstract user(id: string): Nullable<User> | Promise<Nullable<User>>;
@@ -125,11 +150,20 @@ export class Product {
     productCategory?: Nullable<Category>;
 }
 
+export class Profile {
+    id: string;
+    firstName?: Nullable<string>;
+    lastName?: Nullable<string>;
+    address?: Nullable<string>;
+    phone?: Nullable<string>;
+}
+
 export class User {
     id: string;
     email: string;
     password: string;
     role: Role;
+    profile: Profile;
 }
 
 export type DateTime = any;
