@@ -57,6 +57,7 @@ export class CreateProfileInput {
     lastName?: Nullable<string>;
     address?: Nullable<string>;
     phone?: Nullable<string>;
+    userId?: Nullable<string>;
 }
 
 export class UpdateProfileInput {
@@ -65,6 +66,7 @@ export class UpdateProfileInput {
     lastName?: Nullable<string>;
     address?: Nullable<string>;
     phone?: Nullable<string>;
+    userId?: Nullable<string>;
 }
 
 export class CreateUserInput {
@@ -163,7 +165,7 @@ export class User {
     email: string;
     password: string;
     role: Role;
-    profile: Profile;
+    profile?: Nullable<Profile>;
 }
 
 export type DateTime = any;

@@ -11,6 +11,7 @@ input CreateProfileInput {
   lastName: String
   address: String
   phone: String
+  userId: String
 }
 
 input UpdateProfileInput {
@@ -19,6 +20,7 @@ input UpdateProfileInput {
   lastName: String
   address: String
   phone: String
+  userId: String
 }
 
 type Query {
